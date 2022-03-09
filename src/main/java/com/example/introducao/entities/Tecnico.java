@@ -1,11 +1,13 @@
 package com.example.introducao.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,10 @@ public class Tecnico {
 	private String telefone;
 	private String email;
 	private String senha;
+	
+	@OneToMany(mappedBy = "tecnico")
+	private List<OrdemServico> ordensServico;
+	
 	public Long getId() {
 		return id;
 	}

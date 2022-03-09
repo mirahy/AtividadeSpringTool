@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_ordemServico")
+@Table(name = "tb_ordem_servico")
 public class OrdemServico {
 	
 	@Id
@@ -24,8 +24,8 @@ public class OrdemServico {
 	private String descricaoProblema;
 	private String descricaoSolucao;
 	private String dataCadastro;
-	private String status;
-	private String prioridade;
+	private Status status;
+	private Prioridade prioridade;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_tecnico_fk")	
@@ -36,6 +36,17 @@ public class OrdemServico {
 			   joinColumns = @JoinColumn(name = "ordem_id"),
 			   inverseJoinColumns = @JoinColumn(name = "equipamento_id"))
 	Set<Equipamento> equipamentos = new HashSet<>();
+	
+	
+	public enum Status {
+		PENDENTE, CANCELADO, EFETIVADO;
+		
+	}
+	
+	public enum Prioridade {
+		BAIXA, MEDIA, ALTA;
+		
+	}
 	
 	
 	public Long getId() {
@@ -62,17 +73,30 @@ public class OrdemServico {
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	public String getStatus() {
+	
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public String getPrioridade() {
+	public Prioridade getPrioridade() {
 		return prioridade;
 	}
-	public void setPrioridade(String prioridade) {
+	public void setPrioridade(Prioridade prioridade) {
 		this.prioridade = prioridade;
+	}
+	public Tecnico getTecnico() {
+		return tecnico;
+	}
+	public void setTecnico(Tecnico tecnico) {
+		this.tecnico = tecnico;
+	}
+	public Set<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
+	public void setEquipamentos(Set<Equipamento> equipamentos) {
+		this.equipamentos = equipamentos;
 	}
 	@Override
 	public int hashCode() {
