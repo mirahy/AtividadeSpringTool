@@ -1,5 +1,6 @@
 package com.example.introducao.entities;
 
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -23,7 +24,7 @@ public class OrdemServico {
 	private Long id;
 	private String descricaoProblema;
 	private String descricaoSolucao;
-	private String dataCadastro;
+	private Instant dataCadastro;
 	private Status status;
 	private Prioridade prioridade;
 	
@@ -67,13 +68,13 @@ public class OrdemServico {
 	public void setDescricaoSolucao(String descricaoSolucao) {
 		this.descricaoSolucao = descricaoSolucao;
 	}
-	public String getDataCadastro() {
+	public Instant getDataCadastro() {
 		return dataCadastro;
 	}
-	public void setDataCadastro(String dataCadastro) {
+	
+	public void setDataCadastro(Instant dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
 	public Status getStatus() {
 		return status;
 	}
